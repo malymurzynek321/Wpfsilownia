@@ -1,0 +1,50 @@
+﻿<Window x:Class="Wpfsilownia.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpfsilownia"
+        mc:Ignorable="d"
+        Title="Wpfsilownia" Height="2000" Width="800">
+    <Grid>
+        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto">
+            <StackPanel>
+                <TextBox Name="DietaTextBox"></TextBox>
+                <Button Name="DodajDieteButton" Click="DodajDieteButton_Click">Dodaj diete</Button>
+                <DataGrid x:Name="DietyDataGrid" Margin="10" Width="400" Height="200" AutoGenerateColumns="False">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Dieta" Binding="{Binding OpisDiety}" Width="*" />
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Ćwiczenie:" Target="{Binding ElementName=TreningTextBox}" />
+                <TextBox Name="TreningTextBox" />
+
+                <Label Content="Ilosc serii:" Target="{Binding ElementName=IloscPowtorzen}" />
+                <TextBox Name="IloscPowtorzen" />
+                <Button Name="DodajTreningButton" Click="DodajTreningButton_Click">Dodaj Trening</Button>
+                <DataGrid x:Name="TreningiDataGrid" Margin="10" Width="400" Height="200" AutoGenerateColumns="False" SelectionChanged="TreningiDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Opis ćwiczenia" Binding="{Binding OpisTreningu}" Width="*"/>
+                        <DataGridTextColumn Header="Ilość serii" Binding="{Binding IloscPowtorzen}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <Label Content="Waga:" Target="{Binding ElementName=WagaTextBox}" />
+                <TextBox Name="WagaTextBox" TextChanged="WagaTextBox_TextChanged" />
+                <Label Content="Wzrost:" Target="{Binding ElementName=WzrostTextBox}" />
+                <TextBox Name="WzrostTextBox" />
+                <Button Name="ObliczBMI" Click="ObliczBMIButton_Click">Oblicz BMI</Button>
+                <TextBlock>Wynik BMI:</TextBlock>
+                <TextBox x:Name="WynikBMITextBox" IsReadOnly="True" />
+                <!--<DataGrid x:Name="ObliczBMIDataGrid" Margin="10" Width="400" Height="200" AutoGenerateColumns="False" SelectionChanged="BMIiDataGrid_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="Waga" Binding="{Binding Waga}" Width="*"/>
+                        <DataGridTextColumn Header="Wzrost" Binding="{Binding Wzrost}" Width="*"/>
+                        <DataGridTextColumn Header="Wynik BMI" Binding="{Binding WynikBMI}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>-->
+                <Button Content="Wyświetl tablicę BMI" Click="TablicaBMIButton_Click" />
+                <TextBox x:Name="InterpretacjaTextBox" IsReadOnly="True" Height="150" Width="400" Margin="10" TextChanged="InterpretacjaTextBox_TextChanged" />
+            </StackPanel>
+        </ScrollViewer>
+    </Grid>
+</Window>
